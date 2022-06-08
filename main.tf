@@ -748,6 +748,13 @@ resource "aws_lb_listener" "frontend_https" {
     }
   }
 
+  # Added to ignore changes outside of terraform
+  lifecycle {
+    ignore_changes  = [
+      default_action
+    ]
+  }
+
   tags = merge(
     var.tags,
     var.https_listeners_tags,
